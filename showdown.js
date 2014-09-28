@@ -1214,8 +1214,8 @@ var _FormParagraphs = function(text) {
 		}
 		else if (str.search(/\S/) >= 0) {
 			str = _RunSpanGamut(str);
-			str = str.replace(/^([ \t]*)/g,"<p>");
-			str += "</p>"
+			//willia4 -- don't wrap paragraphs in paragraph tags. Some things, like tumblr, will barf on that.
+			str = str.replace(/^([ \t]*)/g,"");
 			grafsOut.push(str);
 		}
 
