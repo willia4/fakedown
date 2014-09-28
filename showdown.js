@@ -64,7 +64,7 @@
 //
 // Showdown namespace
 //
-var Showdown = { extensions: {} };
+var Showdown = { extensions: {}, options: {} };
 
 //
 // forEach
@@ -91,7 +91,7 @@ var stdExtName = function(s) {
 // converter
 //
 // Wraps all "globals" so that the only thing
-// exposed is makeHtml().
+// exposed is makeHtml(). willia4: This is actually inconvenient because of the way this was coded so we'll also add some global options above this
 //
 Showdown.converter = function(converter_options) {
 
@@ -111,7 +111,6 @@ var g_list_level = 0;
 // Global extensions
 var g_lang_extensions = [];
 var g_output_modifiers = [];
-
 
 //
 // Automatic Extension Loading (node only):
@@ -1201,6 +1200,11 @@ var _FormParagraphs = function(text) {
 	var grafs = text.split(/\n{2,}/g);
 	var grafsOut = [];
 
+	var wrapTags = true; 
+	if (Showdown.options && Showdown.options.wrapParagraphs !== undefined ) {
+		wrapTags = Showdown.options.wrapParagraphs;
+	}
+
 	//
 	// Wrap <p> tags.
 	//
@@ -1214,8 +1218,16 @@ var _FormParagraphs = function(text) {
 		}
 		else if (str.search(/\S/) >= 0) {
 			str = _RunSpanGamut(str);
-			//willia4 -- don't wrap paragraphs in paragraph tags. Some things, like tumblr, will barf on that.
-			str = str.replace(/^([ \t]*)/g,"");
+
+			//willia4 -- don't always wrap paragraphs in paragraph tags. Some things, like tumblr, will barf on that.
+			if (wrapTags) {
+				str = str.replace(/^([ \t]*)/g,"<p>");
+				str += "</p>"
+			}
+			else {
+				str = str.replace(/^([ \t]*)/g,"");	
+			}
+		
 			grafsOut.push(str);
 		}
 
