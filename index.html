@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Markdown Test</title> 
+	<style type="text/css">
+	#copyright { 
+		font-size: 8pt;
+		margin-top: 30px;
+		padding-top: 15px;
+		border-top-style: solid;
+		border-top-width: 1px;
+		border-top-color: #000000;
+	}
+	</style>
+
+	<script type="text/javascript" src="showdown.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#markdownbutton").click(function() {
+			var text = $("#copyfrom").val(),
+				converter = new Showdown.converter();
+			
+			text = converter.makeHtml(text);
+			
+			$("#copyto").val(text);
+		});
+
+	});
+	</script>
+
+</head>
+<h2>Fakedown</h2>
+<body>
+<textarea id="copyfrom" cols="150" name="copyfrom" rows="25">
+</textarea>
+<br/>
+<button id="markdownbutton">Markdown!</button>
+<br/>
+<textarea id="copyto" cols="150" name="copyto" rows="25">
+</textarea>
+
+<p id="copyright">
+<a href="http://daringfireball.net/projects/markdown/">Markdown</a> converter tool "<a href="https://github.com/coreyti/showdown">Showdown</a>" slightly modified by <a href="http://jameswilliams.me">James Williams</a>.<br/>
+<br/>
+Showdown<br/>
+Copyright (c) 2007, John Fraser  <br/>
+<a href="http://www.attacklab.net/">http://www.attacklab.net/</a>  <br/>
+All rights reserved.<br/>
+<br/>
+Original Markdown copyright (c) 2004, John Gruber  <br/>
+<a href="http://daringfireball.net">http://daringfireball.net</a>  <br/>
+All rights reserved.<br/>
+</p>
+</body>
+</html>
