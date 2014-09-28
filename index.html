@@ -1,20 +1,53 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Markdown Test</title> 
 	<style type="text/css">
+	body {
+		padding-left: 10px;
+	}
+	#title {
+		text-align: right;
+		font-size: 40pt;
+		
+		border-bottom-style: solid;
+		border-bottom-width: 4px;
+		border-bottom-color: #000000;
+
+		margin-bottom: 10px;
+		padding-bottom: 8px;
+
+		font-family: "Gill Sans", "Helvetica", "Arial", sans-serif;
+		text-transform: lowercase;
+	}
+
+	#title span { 
+		padding-right: 30px;
+	}
+	#explication {
+		width: 400px;
+		font-family: "Verdana", "Arial", sans-serif;
+		margin-left: 1em;
+		line-height: 1.3em;
+	}
+
 	#copyright { 
+		text-align: right;
 		font-size: 8pt;
 		margin-top: 30px;
 		padding-top: 15px;
 		border-top-style: solid;
 		border-top-width: 1px;
 		border-top-color: #000000;
+
+		padding-right: 15px;
+		font-family: "Georgia", "Times New Roman", serif;
 	}
 	</style>
 
 	<script type="text/javascript" src="showdown.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 	<script type="text/javascript">
 	$(document).ready(function() {
@@ -31,8 +64,14 @@
 	</script>
 
 </head>
-<h2>Fakedown</h2>
+<div id="title"><span>Fakedown</span></div>
 <body>
+<p id="explication">
+Markdown is a method of taking plain-text, human readable markup and turning it into HTML. But it has a nasty habit of adding html &lt;p&gt; tags whenever it sees a blank line.
+<br/><br/>
+This can be undesirable. Fakedown parses text using the standard Markdown rules except that it leaves your empty lines alone.
+</p>
+
 <textarea id="copyfrom" cols="150" name="copyfrom" rows="25">
 </textarea>
 <br/>
@@ -43,6 +82,7 @@
 
 <p id="copyright">
 <a href="http://daringfireball.net/projects/markdown/">Markdown</a> converter tool "<a href="https://github.com/coreyti/showdown">Showdown</a>" slightly modified by <a href="http://jameswilliams.me">James Williams</a>.<br/>
+No rights reserved.<br/>
 <br/>
 Showdown<br/>
 Copyright (c) 2007, John Fraser  <br/>
